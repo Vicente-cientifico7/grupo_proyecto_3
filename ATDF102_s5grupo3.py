@@ -272,9 +272,9 @@ elif opcion == 5:
     print("Ïngreso por comision de agente: ", ingreso_agente)
     print("Ingreso por comision: ", ingreso_comision)
 
-
-
-
+#------------------
+#Proyecto 3 en construcción
+#------------------
     # Variables iniciales
 oficina1 = "Dirección: Estación Central \n Gerente: Carlos Pachenco \n Agente: Fernando Lopez"
 oficina2 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente: Roberto Paredes"
