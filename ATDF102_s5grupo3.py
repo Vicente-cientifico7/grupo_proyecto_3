@@ -271,3 +271,42 @@ elif opcion == 5:
     print("Ingresos por comision de gerente: ", ingreso_gerente)
     print("Ïngreso por comision de agente: ", ingreso_agente)
     print("Ingreso por comision: ", ingreso_comision)
+
+
+
+
+    # Variables iniciales
+oficina1 = "Dirección: Estación Central \n Gerente: Carlos Pachenco \n Agente: Fernando Lopez"
+oficina1 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente: Roberto Paredes"
+oficina1 = "" #Espacio vacío para nueva oficina
+total_oficinas = 2
+
+inmueble1 = "Tipo: vivienda (departamento) \n Dirección: Av. Vitacura 4380, Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF"
+inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870, Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF"
+inmueble3 = ""
+total_inmueble = 2
+
+while True:
+    print("====================================================")
+    print("Bienvenidos al menu de la mejor inmobiliaria de Chile")
+    print("=====================================================")
+    print("A continuación se mostraran las alternativas de navegación: ")
+    print("1. consulta de datos")
+    print("2. registrar nuevos datos")
+    print("3. apagar")
+    print("=====================================================")
+    opcion_principal = int(input("Seleccione la alternativa que desea: "))
+    print("************************************************")
+
+    #consulta de datos
+    if opcion_principal == 1:
+        oficinax = input
+
+    elif opcion_principal == 2:
+
+
+    elif opcion_principal ==3:
+        print("Adiós")
+        break
+    else:
+        print("La opsión ingresada es inválida, intentelo de nuevo")
