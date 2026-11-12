@@ -277,9 +277,41 @@ elif opcion == 5:
 
     # Variables iniciales
 oficina1 = "Dirección: Estación Central \n Gerente: Carlos Pachenco \n Agente: Fernando Lopez"
-oficina1 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente: Roberto Paredes"
-oficina1 = "" #Espacio vacío para nueva oficina
+oficina2 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente: Roberto Paredes"
+oficina3 = "" #Espacio vacío para nueva oficina
 total_oficinas = 2
+
+ip1 = "Tipo: vivienda (departamento) \n"\
+    "Dirección: Av. Vitacura 4380, Vitacura \n" \
+    "Superficie: 120 m^2 \n" \
+    "Tasa de tasación: 540 UF\n" \
+    "Número de habitaciones: 4\n" \
+    "Número de baños: 1\n" \
+    "Número de cocinas: 1\n" \
+    "Características especificas:\n" \
+    "\n"\
+    "Nombre del propietario: Sebastián Ignacio Valdés Rojas\n"\
+    "Rut: 14903221K\n"\
+    "Número de teléfono: |+56223456789|+56221454508|\n"\
+    "Fecha del contrato: 15 01 2026\n"\
+    "Plazo del contrato: 12 meses\n"\
+    "\n"
+ip2 = "Tipo: bodega \n" \
+    " Dirección: Calle Alonso de Córdova 5870, Las Condes \n" \
+    " Superficie: 95 m^2 \n" \
+    " Tasa de tasación: 1770 UF\n"\
+    "Número de puertas de acceso: 2\n" \
+    "¿Tiene ventanas?: si\n" \
+    "Estructura: acondicionado\n" \
+    "\n" \
+    "Nombre del propietario: Rodrigo Esteban Castillo Navarro\n"\
+    "Rut: 108563415\n"\
+    "Número de teléfono: |+56227119034|\n"\
+    "Fecha del contrato: 23 02 2025\n"\
+    "Plazo del contrato: indefinido\n"\
+    "\n" 
+ip3 = "" #Espacio vacío para agregar nuevo inmueble y su propietario
+total_inmueble = 2
 
 inmueble1 = "Tipo: vivienda (departamento) \n Dirección: Av. Vitacura 4380, Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF"
 inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870, Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF"
@@ -291,7 +323,7 @@ while True:
     print("Bienvenidos al menu de la mejor inmobiliaria de Chile")
     print("=====================================================")
     print("A continuación se mostraran las alternativas de navegación: ")
-    print("1. consulta de datos")
+    print("1. Solicitar datos")
     print("2. registrar nuevos datos")
     print("3. apagar")
     print("=====================================================")
@@ -300,11 +332,49 @@ while True:
 
     #consulta de datos
     if opcion_principal == 1:
-        oficinax = input
 
+        while True:
+            llave_secundaria = int(input("Seleccione la opción que desea (para volver al menu ingrese '0'): "))
+            if llave_secundaria == 1:
+            #Consultar la oficina
+                ox = input("indique el número de la oficina:")
+                if ox == 1:
+                    print("1:\n",oficina1)
+                elif ox == 2:
+                    print("2:\n",oficina2)
+                else:
+                    print("No hay una oficina con ese número, por favor agréguelo.")
+
+            elif llave_secundaria == 2:
+            #Consultar inmueble y su propietario
+                ix = input("indique el número del inmueble y su propietario:")
+                if ix == ip1:
+                    print("1:\n",inmueble1)
+                elif ix == ip2:
+                    print("2:\n",inmueble2)
+                else:
+                    print("No hay un inmueble ni/o propietario con ese número, por favor agréguelo/os.")
+
+            elif llave_secundaria == 2:
+            #Consultar el comprador o arrendador del inmueble
+                ix = input("indique el número del :")
+                if ix == 1:
+                    print("1:\n",inmueble1)
+                elif ix == 2:
+                    print("2:\n",inmueble2)
+                else:
+                    print("No hay un inmueble con ese número, por favor agréguelo.")
+
+            elif llave_secundaria == 0:
+                break
+
+
+
+    #registrar nuevos datos
     elif opcion_principal == 2:
 
 
+    #apagar
     elif opcion_principal ==3:
         print("Adiós")
         break
