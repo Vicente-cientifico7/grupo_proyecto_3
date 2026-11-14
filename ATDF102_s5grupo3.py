@@ -281,7 +281,7 @@ oficina2 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente de venta
 oficina3 = "" #Espacio vacío para nueva oficina
 total_oficinas = 2
 
-inmueble1 = "Tipo: vivienda usada (departamento) \n Dirección: Avenida Vitacura 4380,Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF\n Número de habitaciones: 4 \n Número de baños: 1 \n Número de cocinas: 1 \n Características especificas: Nada"
+inmueble1 = "Tipo: vivienda usada (departamento) \n Dirección: Avenida Vitacura 4380,Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF\n Número de habitaciones: 4 \n Número de baños: 1 \n Número de cocinas: 1 \n Características especificas: ||"
 inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870,Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF \n Número de puertas de acceso: 2 \n ¿Tiene ventanas?: si \n Estructura: acondicionado"
 inmueble3 = "" #Espacio vacío para agregar nuevo inmueble
 total_inmueble = 2
@@ -291,10 +291,10 @@ contrato2 = "Nombre del propietario: Rodrigo Esteban Castillo Navarro \n Rut: 10
 contrato3 = "" #Espacio vacío para agregar nuevo contrato del propietario
 total_contratos = 2
 
-cliente1 = "Nombre del cliente: Benjamin Nicolas Castro Rojas \n Número de oficina: 1 \n Fecha de visita: 13 02 2025 \n Comentario: Nada"
-cliente2 = "Nombre del cliente: Sarah Fernanda Flores Valdez \n Número de oficina: 2 \n Fecha de visita: 15 11 2025 \n Comentario: La casa debe ser amarilla"
+cliente1 = "Nombre del cliente: Benjamin Nicolas Castro Rojas \n Número de oficina: 1 \n Fecha de visita: 13 02 2025 \n Comentario: ||"
+cliente2 = "Nombre del cliente: Sarah Fernanda Flores Valdez \n Número de oficina: 2 \n Fecha de visita: 15 11 2025 \n Comentario: |La casa debe ser amarilla|"
 cliente3 = "" #Espacio vacío para agregar nuevo cliente
-total_clientes = 2
+total_visitas = 2
 
 # --- Acumuladores financieros precargados (en pesos) ---
 total_ventas_casas = 300000000
@@ -309,6 +309,9 @@ total_arriendos_bodega = 0
 total_ventas_local = 0
 total_arriendos_local = 600000000
 
+comision_gerente = 0.1
+comision_agente = 0.3
+comision_venta = 0.3
 #--------------
 #Menu principal
 #--------------
@@ -374,7 +377,7 @@ while True:
             elif llave_secundaria == 4:
             #Consultar la visita del cliente
                 vx = 0
-                while vx <= total_clientes:
+                while vx <= total_visitas:
                     if vx == 1:
                         print("1:\n",cliente1)
                     elif vx == 2:
@@ -415,6 +418,7 @@ while True:
                 agente_venta =input("Introduzca el nombre del agente de venta: ")
                 print("===============================================")
                 print("Datos registrados: ")
+                print("===============================================")
                 print()
 
                 print("Oficina registrada")
@@ -424,11 +428,14 @@ while True:
 
                 oficina3 = "Dirección: " + oficina + " \n " + "Gerente: " +  gerente_oficina + " \n " + "Agente de venta: " + agente_venta
 
-                print("Se ha registrado con éxito la oficina " + numero_o)
+                print("Se ha registrado con éxito la oficina " + str(numero_o))
                 total_oficinas = total_oficinas +1
 
             elif llave_secundaria == 2:
                 #Nuevo inmueble
+                numero_i = 0
+                while numero_i <=total_inmueble:
+                    numero_i = numero_i + 1
 
                 print("Registro de la información general del inmueble")
                 print("")
@@ -454,68 +461,38 @@ while True:
                     n_habitaciones = int(input("Indica el número de habitaciones: "))
                     n_baños = int(input("Indica el número de baños: "))
                     n_cocinas = int(input("Indica el número de cocinas: "))
-                    red_gas = input("Indique si la propiedad cuenta con red de gas (Si/No): ")
-                    puerta_blindada = input("Indique si la propiedad cuenta con puerta blindada (Si/No): ")
-                    tipo_piso = input("Indique el tipo de piso de la propiedad: ")
+
+                    caract_fica = "|"
+                    while True:
+                        nueva_caracteristica = input("Opcionalmente, introdusca al menos 1 caracteristica específica del inmueble, en caso contrario o ya introdujo suficientes caracteristicas, no escriba nada")
+                        caract_fica = caract_fica + nueva_caracteristica + "|"
+                        if nueva_caracteristica == "":
+                            break
+                    inmueble3 = "Tipo: " + "vivienda " + estado_vivienda + "(" + tipo_vivienda + ")" + "\n" + "Dirección: " + calle + str(numero) + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasacion) + " UF" + "\n" + "Número de habitaciones: " + str(n_habitaciones) + "\n" + "Número de baños: " + str(n_baños) + "\n" + "Número de cocinas: " + str(n_cocinas) + "\n" + "Características especificas: " + caract_fica
+
                 elif tipo_inmueble == 1 or tipo_inmueble == 2:
+                    if tipo_inmueble == 1:
+                        local_o_comercio = "Local comercial"
+                    elif tipo_inmueble == 2:
+                        local_o_comercio = "Bodega"
                     numero_puertas =  int(input("Indica el número de puertas de acceso: "))
                     ventanas = input("Indica la presencia de ventanas (Si/No): ")
                     estructura = input("Indica si el inmueble esta 'acondicionado' o es 'planta libre': ")
-                numero_i = 0
-                while numero_i <=total_inmueble:
-                    numero_i = numero_i + 1
 
-                print("===============================================")
-                print("Datos registrados: ")
-                print()
-                print("Inmueble registrado")
-                if tipo_inmueble == 0:
-                    registro_inmueble = "Vivienda"
-                elif tipo_inmueble == 1:
-                    registro_inmueble = "Local comercial"
-                else: 
-                    registro_inmueble = "Bodega"
-
-                print("Tipo de inmueble: ", registro_inmueble)
-                print("Calle: ", calle)
-                print("Numero: ", numero)
-                print("Comuna: ", comuna)
-                print("Superficie m2: ", superficie_m2)
-                print("Valor de tasación: ", valor_tasacion)
+                    inmueble3 = "Tipo: " + local_o_comercio + "\n" + "Dirección: " + calle + str(numero) + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasacion) + " UF" + "\n" + "Número de puertas de acceso: " + str(numero_puertas) + "\n" + "¿Tiene ventanas?: " + ventanas + "\n" + "Estructura: " + estructura
                 
-                if tipo_inmueble == 0:
-                    print("Estado de la vivienda: ", estado_vivienda)
-                    print("Tipo de vivienda: ", tipo_vivienda)
-                    print("Numero de habitaciones: ",n_habitaciones)
-                    print("Numero de baños: ",n_baños)
-                    print("Numero de cocinas: ",n_cocinas)
-                    print("Tiene red de gas: ",red_gas)
-                    print("Tiene puerta blindada: ",puerta_blindada)
-                    print("El tipo de piso es: ",tipo_piso)
-                else: 
-                    print("Numero de puertas de acceso: ", numero_puertas)
-                    print("Tiene ventanas: ", ventanas)
-                    print("Condición: ", estructura)
-                    print("")
-                
-                print("")  
-                print("Propietario registrado")
-                print("Nombre del propietario: ", nombre_propietario)
-                print("Rut del propietario: ", rut_propietario)
-                print("Telefonos: ", telefono_propietario1, " - ", telefono_propietario2)
-                print("Plazo del contrato: ", plazo_contrato)
-
-                print("Se ha registrado con éxito el inmueble " + numero_i)
-
+                print("Se ha registrado con éxito el inmueble " + str(numero_i))
                 total_inmueble = total_inmueble +1
-
             elif llave_secundaria == 3:
                 #Nuevo contrato
-
+                numero_c = 0
+                while numero_c <=total_contratos:
+                    numero_c = numero_c + 1
                 #Información del propietario que ofrecerá el inmueble
-                print("************************************************")
+                print("===============================================")
                 print("Registro de información del propietario ")
-                print("")
+                print("===============================================")
+                print()
                 nombre_propietario = input("Introduzca el nombre completo: ")
                 rut_propietario = input("Introduzca el RUT: ")
 
@@ -535,20 +512,150 @@ while True:
 
                         cantidad_telefono = cantidad_telefono + 3
 
-                plazo_contrato = input("Introduzca el plazo del contrato, indicando las unidades de tiempo (meses) o, si el plazo no está fijado escriba 'indefinido': ")
+                fecha_contrato = input("Introduzca la fecha en que se firmo el contrato, siguiendo el formato 'día-mes-año' (ejemplo: 12 05 2024)")
 
+                plazo_contrato = input("Introduzca el plazo del contrato, indicando las unidades de tiempo (meses) o, si el plazo no está fijado, escriba 'indefinido': ")
+
+                contrato3 = "Nombre del propietario: " + nombre_propietario + "\n" + "Rut: " + str(rut_propietario) + "\n" + "Número de teléfono: " + telefono + "\n" + "Fecha del contrato: " + fecha_contrato + "\n" + "Plazo del contrato: " + plazo_contrato
+
+                print("Se ha registrado con éxito el contrato " + str(numero_c))
+                total_contratos = total_contratos +1
 
             elif llave_secundaria == 4:
                 #Nueva visita
+                numero_v = 0
+                while numero_v <= total_visitas:
+                    numero_v = numero_v + 1
+                print("===============================================")
+                print("Registro de información de visita")
+                print("===============================================")
+                print()
+
+                nombre_cliente = input("Ingrese nombre completo del cliente: ")
+                oficina_visitar = (input("Ingrese el número de la oficina a visitar: "))
+                fecha = input("Ingrese fecha de visita, siguiendo el formato 'día-mes-año' (ejemplo: 12 05 2024): ")
+
+                comentario = "|"
+
+                print("Si quiere poner uno o más comentarios, escoja las siguientes opsiones: ")
+                print("1. Poner un comentario")
+                print("0. No poner comentarios")
+
+                llave_comentario = int(input())
+
+                if llave_comentario == 1:
+                    while True:
+                        hacer_comentarios = int(input("Con '1' ponga un comentario, con '0' se deja de poner comentarios"))
+                        if hacer_comentarios == 1:
+                            comentario_nuevo = input("Ingrese el comentario del cliente: ")
+                            comentario = comentario + comentario_nuevo + "|"
+                        elif hacer_comentarios == 0:
+                            break
+
+                elif llave_comentario == 0:
+                    break
+                
+                #Información del cliente y su visita que comprará o arrenderá el inmueble
+    
+                cliente3= "Nombre del cliente: " + nombre_cliente + "\n" + "Número de oficina: " + oficina_visitar + "\n" + "Fecha de visita:" + fecha + "\n" + "Comentario: " + comentario
+                print("Se ha registrado con éxito la visita del cliente " + str(numero_v))
+                total_visitas = total_visitas +1
 
             elif llave_secundaria == 0:
+                print("Volviendo al menu principal")
                 break
 
 
     #registrar Solicitar reporte de venta o arriendo
     elif opcion_principal == 3:
 
+        while True:
 
+            total_casa = total_ventas_casas + total_arriendos_casa
+            
+            total_depto = total_ventas_depto + total_arriendos_depto
+            
+            total_bodega = total_ventas_bodega + total_arriendos_bodega
+            
+            total_local = total_ventas_local + total_arriendos_local
+            
+            print("Solicitud de reportabilidad")
+            print("")
+
+            print("Seleccione el reporte que desea visualizar: ")
+            print("")
+            
+            print("1. Total de ingresos: ")
+            print("2. Total de ingresos por ventas: ")
+            print("3. Total de ingresos por arriendo: ")
+            print("4. Ingresos de la oficina: ")
+            print("0. Total de ingresos por arriendo: ")
+            print("")
+            opcion_reporte = int(input("Alternativa seleccionada: "))
+            print("")
+            
+            if opcion_reporte == 1:
+                ingreso = total_casa + total_depto + total_bodega + total_local
+            
+            elif opcion_reporte == 2:
+                print("Seleccione el reporte a visualizar: ")
+                print("")
+                print("1. Total ventas globales")
+                print("2. Total ventas casas")
+                print("3. Total ventas departamentos")
+                print("4. Total ventas bodegas")
+                print("5. Total ventas locales comerciales")
+                alternativa_reporte = int(input("Alternativa seleccionada: "))
+                
+                if alternativa_reporte == 1:
+                    ingreso = total_ventas_casas + total_ventas_depto + total_ventas_bodega + total_ventas_local
+                elif alternativa_reporte == 2:
+                    ingreso = total_ventas_casas
+                elif alternativa_reporte == 3:
+                    ingreso = total_ventas_depto
+                elif alternativa_reporte == 4:
+                    ingreso = total_ventas_bodega
+                elif alternativa_reporte == 5:
+                    ingreso = total_ventas_local
+            
+            elif opcion_reporte == 3:
+                print("Seleccione el reporte a visualizar: ")
+                print("")
+                print("1. Total arriendo globales")
+                print("2. Total arriendo casas")
+                print("3. Total arriendo departamentos")
+                print("4. Total arriendo bodegas")
+                print("5. Total arriendo locales comerciales")
+                alternativa_reporte = int(input("Alternativa seleccionada: "))
+                
+                if alternativa_reporte == 1:
+                    ingreso = total_arriendos_casa + total_arriendos_depto + total_arriendos_bodega + total_arriendos_local
+                elif alternativa_reporte == 2:
+                    ingreso = total_arriendos_casa
+                elif alternativa_reporte == 3:
+                    ingreso = total_arriendos_depto
+                elif alternativa_reporte == 4:
+                    ingreso = total_arriendos_bodega
+                elif alternativa_reporte == 5:
+                    ingreso = total_arriendos_local
+
+            elif opcion_reporte == 4:
+                ingreso_gerente = 0.1 * ingreso
+                ingreso_agente = 0.3 * ingreso
+                ingreso_comision = 0.3 * ingreso
+            
+                print("Los ingresos son: ")
+                print("Ingresos totales: ", ingreso)
+                print("Ingresos por comision de gerente: ", ingreso_gerente)
+                print("Ïngreso por comision de agente: ", ingreso_agente)
+                print("Ingreso por comision: ", ingreso_comision)
+
+            elif opcion_reporte == 0:
+                print("Volviendo al menu principal")
+                break
+            
+            else:
+                print("La opción que ha ingresado no es valida")
     #apagar
     elif opcion_principal ==0:
         print("Adiós")
