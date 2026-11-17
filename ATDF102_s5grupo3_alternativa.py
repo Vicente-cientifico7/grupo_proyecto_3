@@ -7,7 +7,7 @@ oficina2 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente de venta
 oficina3 = "" #Espacio vacío para nueva oficina
 total_oficinas = 2
 
-inmueble1 = "Tipo: vivienda usada (departamento) \n Dirección: Avenida Vitacura 4380,Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF\n Número de habitaciones: 4 \n Número de baños: 1 \n Número de cocinas: 1 \n característicass especificas: ||"
+inmueble1 = "Tipo: vivienda usada (departamento) \n Dirección: Avenida Vitacura 4380,Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF\n Número de habitaciones: 4 \n Número de baños: 1 \n Número de cocinas: 1 \n Características especificas: ||"
 inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870,Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF \n Número de puertas de acceso: 2 \n ¿Tiene ventanas?: si \n Estructura: acondicionado"
 inmueble3 = "" #Espacio vacío para agregar nuevo inmueble
 total_inmueble = 2
@@ -206,7 +206,7 @@ while True:
                             caract_fica = caract_fica + nueva_caracteristicas + "|"
                             if nueva_caracteristicas == "":
                                 break
-                        inmueble3 = "Tipo: " + "vivienda " + estado_vivienda + "(" + tipo_vivienda + ")" + "\n" + "Dirección: " + calle + str(numero) + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasación) + " UF" + "\n" + "Número de habitaciones: " + str(n_habitaciones) + "\n" + "Número de baños: " + str(n_baños) + "\n" + "Número de cocinas: " + str(n_cocinas) + "\n" + "característicass especificas: " + caract_fica
+                        inmueble3 = "Tipo: " + "vivienda " + estado_vivienda + "(" + tipo_vivienda + ")" + "\n" + "Dirección: " + calle + " " + str(numero) + "," + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasación) + " UF" + "\n" + "Número de habitaciones: " + str(n_habitaciones) + "\n" + "Número de baños: " + str(n_baños) + "\n" + "Número de cocinas: " + str(n_cocinas) + "\n" + "Características especificas: " + caract_fica
 
                     elif tipo_inmueble == 1 or tipo_inmueble == 2:
                         if tipo_inmueble == 1:
@@ -217,7 +217,7 @@ while True:
                         ventanas = input("Indica la presencia de ventanas (Si/No): ")
                         estructura = input("Indica si el inmueble esta 'acondicionado' o es 'planta libre': ")
 
-                        inmueble3 = "Tipo: " + local_o_comercio + "\n" + "Dirección: " + calle + str(numero) + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasación) + " UF" + "\n" + "Número de puertas de acceso: " + str(numero_puertas) + "\n" + "¿Tiene ventanas?: " + ventanas + "\n" + "Estructura: " + estructura
+                        inmueble3 = "Tipo: " + local_o_comercio + "\n" + "Dirección: " + calle + " " + str(numero) + "," + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasación) + " UF" + "\n" + "Número de puertas de acceso: " + str(numero_puertas) + "\n" + "¿Tiene ventanas?: " + ventanas + "\n" + "Estructura: " + estructura
                     
                     print("Se ha registrado con éxito el inmueble " + str(numero_i))
                     total_inmueble = total_inmueble +1
@@ -300,7 +300,6 @@ while True:
                     print("2. Arriendo")
                     opcion_operación = int(input("Escoja la opción para indicar el tipo de operación: "))
 
-                    tipo_operación = ""
                     if opcion_operación == 1:
                         tipo_operación = "Venta"
                     elif opcion_operación == 2:
@@ -308,25 +307,17 @@ while True:
 
                     comentario = "|"
 
-                    print("Si quiere poner uno o más comentarios, escoja las siguientes opciones: ")
-                    print("1. Poner un comentario")
-                    print("0. No poner comentarios")
+                    print("Sección de comentarios del cliente: ")
+                    while True:
+                        hacer_comentarios = int(input("Con '1' se agrega un comentario, con '0' se deja de poner comentarios"))
+                        if hacer_comentarios == 1:
+                            comentario_nuevo = input("Ingrese el comentario del cliente: ")
+                            comentario = comentario + comentario_nuevo + "|"
+                        elif hacer_comentarios == 0:
+                            break
+                        else:
+                            print("Opción inválida, solo se acepta 1 o 0.")
 
-                    llave_comentario = int(input())
-
-                    if llave_comentario == 1:
-                        while True:
-                            hacer_comentarios = int(input("Con '1' ponga un comentario, con '0' se deja de poner comentarios"))
-                            if hacer_comentarios == 1:
-                                comentario_nuevo = input("Ingrese el comentario del cliente: ")
-                                comentario = comentario + comentario_nuevo + "|"
-                            elif hacer_comentarios == 0:
-                                break
-                            else:
-                                print("Opción inválida, solo se acepta 1 o 0.")
-
-                    elif llave_comentario == 0:
-                        break
                     #Información del cliente y su visita que comprará o arrendará el inmueble
                     print("Antes de terminar, escoja la opción del tipo de contrato comercial a realizar:")
                     print("0. Exclusividad (Escoger esta opción hará que el cliente deba cancelar un monto del 0.5 % del valor de tasación del inmueble )")
@@ -348,7 +339,7 @@ while True:
 
                     elif opcion_tcontrato == 1:
                         tipo_contrato = "Sin exclusividad"                
-                        cliente3= "Nombre del cliente: " + nombre_cliente + "\n" + "Número de oficina: " + str(oficina_visitar) + "\n" + "Número de inmueble: "+ str(inmueble_interes) + "\n" + "tipo_contrato: " + tipo_contrato + "\n" +"Tipo de operación: " + tipo_operación + "\n" + "Fecha de visita:" + fecha + "\n" + "Comentario: " + comentario
+                        cliente3= "Nombre del cliente: " + nombre_cliente + "\n" + "Número de oficina: " + str(oficina_visitar) + "\n" + "Número de inmueble: "+ str(inmueble_interes) + "\n" + "Tipo de contrato: " + tipo_contrato + "\n" +"Tipo de operación: " + tipo_operación + "\n" + "Fecha de visita:" + fecha + "\n" + "Comentario: " + comentario
                     
                     print("Se ha registrado con éxito la visita del cliente " + str(numero_v))
                     total_visitas = total_visitas +1
@@ -362,6 +353,9 @@ while True:
 
     #registrar Solicitar reporte de venta o arriendo
     elif opcion_principal == 3:
+
+        ingreso = total_ventas_casas + total_arriendos_casa + total_ventas_depto + total_arriendos_depto + total_ventas_bodega + total_arriendos_bodega + total_ventas_local + total_arriendos_local
+        fuente_ingresos = "todos los inmuebles"
 
         while True:
 
@@ -383,7 +377,7 @@ while True:
             print("2. Total de ingresos por ventas: ")
             print("3. Total de ingresos por arriendo: ")
             print("4. Ingresos de la oficina: ")
-            print("0. Total de ingresos por arriendo: ")
+            print("0. Volver al menú principal: ")
             print("")
             opcion_reporte = int(input("Alternativa seleccionada: "))
             print("")
