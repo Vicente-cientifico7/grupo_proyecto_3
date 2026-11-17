@@ -2,13 +2,13 @@
 #Proyecto 3 en construcción
 #------------------
     # Variables iniciales
-oficina1 = "Dirección: Estación Central \n Gerente: Carlos Pachenco \n Agente de venta: Fernando Lopez"
+oficina1 = "Dirección: Estación Central \n Gerente: Carlos Pachenco \n Agente de venta: Fernando López"
 oficina2 = "Dirección: El bosque \n Gerente: Nicolas Andaluz \n Agente de venta: Roberto Paredes"
 oficina3 = "" #Espacio vacío para nueva oficina
 total_oficinas = 2
 
 inmueble1 = "Tipo: vivienda usada (departamento) \n Dirección: Avenida Vitacura 4380,Vitacura \n Superficie: 120 m^2 \n Tasa de tasación: 540 UF\n Número de habitaciones: 4 \n Número de baños: 1 \n Número de cocinas: 1 \n Características especificas: ||"
-inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870,Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF \n Número de puertas de acceso: 2 \n ¿Tiene ventanas?: si \n Estructura: acondicionado"
+inmueble2 = "Tipo: bodega \n Dirección: Calle Alonso de Córdova 5870,Las Condes \n Superficie: 95 m^2 \n Tasa de tasación: 1770 UF \n Número de puertas de acceso: 2 \n ¿Tiene ventanas?: si \n Estructura: Acondicionado"
 inmueble3 = "" #Espacio vacío para agregar nuevo inmueble
 total_inmueble = 2
 
@@ -39,13 +39,13 @@ comision_gerente = 0.1
 comision_agente = 0.3
 comision_venta = 0.3
 #--------------
-#Menu principal
+#Menú principal
 #--------------
 while True:
     print("====================================================")
-    print("Bienvenidos al menu de la mejor inmobiliaria de Chile")
+    print("Bienvenidos al menú de la mejor inmobiliaria de Chile")
     print("=====================================================")
-    print("A continuación se mostraran las alternativas de navegación: ")
+    print("A continuación se mostrarán las alternativas de navegación: ")
     print("1. Solicitar datos")
     print("2. Registrar nuevos datos")
     print("3. Solicitar reporte de venta o arriendo")
@@ -59,7 +59,7 @@ while True:
 
         while True:
             print("......................................................")
-            print("Menu de consulta de datos:")
+            print("Menú de consulta de datos:")
             print("......................................................")
             print("Escoja una de las siguientes opciones:")
             print("1. Consultar oficinas registrados")
@@ -68,7 +68,7 @@ while True:
             print("4. Consultar la visitas de clientes registrados")
             print("0. Volver al menú principal")
 
-            llave_secundaria = int(input("Seleccione la opción que desea (para volver al menu ingrese '0'): "))
+            llave_secundaria = int(input("Seleccione la opción que desea (para volver al menú ingrese '0'): "))
 
             if llave_secundaria == 1:
             #Consultar la oficina
@@ -119,7 +119,7 @@ while True:
                     vx = vx + 1
 
             elif llave_secundaria == 0:
-            #Volver al menu principal
+            #Volver al menú principal
                 break
             else:
                 print("Opción de consulta no válida.")
@@ -128,7 +128,7 @@ while True:
     elif opcion_principal == 2:
         while True:
             print("......................................................")
-            print("Menu para registrar datos nuevos:")
+            print("Menú para registrar datos nuevos:")
             print("......................................................")
             print("Escoja una de las siguientes opciones:")
             print("1. Nueva oficina")
@@ -137,7 +137,7 @@ while True:
             print("4. Nueva visita")
             print("0. Volver al menú principal")
 
-            llave_secundaria = int(input("Seleccione la opción que desea (para volver al menu ingrese '0'): "))
+            llave_secundaria = int(input("Seleccione la opción que desea (para volver al menú ingrese '0'): "))
 
             if llave_secundaria == 1:
                 #Nueva oficina
@@ -215,14 +215,14 @@ while True:
                             local_o_comercio = "Bodega"
                         numero_puertas =  int(input("Indica el número de puertas de acceso: "))
                         ventanas = input("Indica la presencia de ventanas (Si/No): ")
-                        estructura = input("Indica si el inmueble esta 'acondicionado' o es 'planta libre': ")
+                        estructura = input("Indica si el inmueble está 'acondicionado' o es 'planta libre': ")
 
                         inmueble3 = "Tipo: " + local_o_comercio + "\n" + "Dirección: " + calle + str(numero) + comuna + "\n" + "Superficie: " + str(superficie_m2) + " m^2" + "\n" + "Tasa de tasación: " + str(valor_tasacion) + " UF" + "\n" + "Número de puertas de acceso: " + str(numero_puertas) + "\n" + "¿Tiene ventanas?: " + ventanas + "\n" + "Estructura: " + estructura
                     
                     print("Se ha registrado con éxito el inmueble " + str(numero_i))
                     total_inmueble = total_inmueble +1
                 else:
-                    print("Se alcanzo la máxima capacidad de inmuebles (3). No se puede agregar más.")
+                    print("Se alcanzó la máxima capacidad de inmuebles (3). No se puede agregar más.")
             elif llave_secundaria == 3:
                 #Nuevo contrato
                 if total_contratos < 3:
@@ -231,7 +231,7 @@ while True:
                         numero_c = numero_c + 1
                     #Información del propietario que ofrecerá el inmueble
                     print("===============================================")
-                    print("Registro de información del propietario y de su contrato en el que ingreso su inmueble")
+                    print("Registro de información del propietario y de su contrato en el que ingresó su inmueble")
                     print("===============================================")
                     print()
                     nombre_propietario = input("Introduzca el nombre completo: ")
@@ -240,7 +240,7 @@ while True:
                     cantidad_telefono = 1
                     telefono = "|" + input("Introduzca el número de contacto: ") + "|"
                     while cantidad_telefono <= 3:
-                        respuesta_telefono = int(input("Opsionalmente introduzca otro número (máximo 3), use una de las siguientes opciones:"))
+                        respuesta_telefono = int(input("Opcionalmente introduzca otro número (máximo 3), use una de las siguientes opciones:"))
                         print ("1. Introducir otro número")
                         print ("0. No introducir más")
 
@@ -256,7 +256,7 @@ while True:
                         else:
                             print("Opción inválida, solo se acepta 1 o 0.")
 
-                    fecha_contrato = input("Introduzca la fecha en que se firmo el contrato, siguiendo el formato 'día-mes-año' (ejemplo: 12 05 2024)")
+                    fecha_contrato = input("Introduzca la fecha en que se firmó el contrato, siguiendo el formato 'día-mes-año' (ejemplo: 12 05 2024)")
 
                     plazo_contrato = input("Introduzca el plazo del contrato, indicando las unidades de tiempo (meses) o, si el plazo no está fijado, escriba 'indefinido': ")
 
@@ -265,7 +265,7 @@ while True:
                     print("Se ha registrado con éxito el contrato " + str(numero_c))
                     total_contratos = total_contratos +1
                 else:
-                    print("Se alcanzo la máxima capacidad de contratos de propietario (3). No se puede agregar más.")
+                    print("Se alcanzó la máxima capacidad de contratos de propietario (3). No se puede agregar más.")
             elif llave_secundaria == 4:
                 #Nueva visita
                 if total_visitas < 3:
@@ -353,10 +353,10 @@ while True:
                     print("Se ha registrado con éxito la visita del cliente " + str(numero_v))
                     total_visitas = total_visitas +1
                 else:
-                    print("Se alcanzo la máxima capacidad de visitas (3). No se puede agregar más.")
+                    print("Se alcanzó la máxima capacidad de visitas (3). No se puede agregar más.")
 
             elif llave_secundaria == 0:
-                print("Volviendo al menu principal")
+                print("Volviendo al menú principal")
                 break
 
 
@@ -383,7 +383,7 @@ while True:
             print("2. Total de ingresos por ventas: ")
             print("3. Total de ingresos por arriendo: ")
             print("4. Ingresos de la oficina: ")
-            print("0. Total de ingresos por arriendo: ")
+            print("0. Volver al menú principal")
             print("")
             opcion_reporte = int(input("Alternativa seleccionada: "))
             print("")
@@ -467,19 +467,19 @@ while True:
             
                 print("Los ingresos de la oficina, según los ingresos de " + fuente_ingresos + " son: ")
                 print("Ingresos totales: ", ingreso)
-                print("Ingresos por comision de gerente: ", ingreso_gerente)
+                print("Ingresos por comisión de gerente: ", ingreso_gerente)
                 print("Ingreso por comisión de agente: ", ingreso_agente)
-                print("Ingreso por comision: ", ingreso_comision)
+                print("Ingreso por comisión: ", ingreso_comision)
 
             elif opcion_reporte == 0:
-                print("Volviendo al menu principal")
+                print("Volviendo al menú principal")
                 break
             
             else:
-                print("La opción que ha ingresado no es valida")
+                print("La opción que ha ingresado no es válida")
     #apagar
     elif opcion_principal ==0:
         print("Adiós")
         break
     else:
-        print("La opción ingresada es inválida, intentelo de nuevo")
+        print("La opción ingresada es inválida, inténtelo de nuevo")
