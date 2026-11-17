@@ -483,5 +483,3 @@ while True:
         break
     else:
         print("La opción ingresada es inválida, intentelo de nuevo")
-
-        wokfjwefjejkf
