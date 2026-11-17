@@ -354,7 +354,7 @@ while True:
 
                     if opcion_tcontrato == 0:
                         while True:
-                            tasación = float(input("Valor de tasación sin puntos del inmueble escogido por el cliente: "))
+                            tasación = float(input("Valor de tasación del inmueble escogido por el cliente: "))
                             if tasación <= 0:
                                 print("El valor debe ser mayor que cero.")                    
                             else:
